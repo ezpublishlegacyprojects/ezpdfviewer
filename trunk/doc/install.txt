@@ -1,0 +1,19 @@
+Extension : ezpdfviewer
+Requires  : eZ Publish 4.x.x (not tested on 3.X but can be easily customised for)
+Authors   : Jean-Yves Zinsou
+
+Requirements:
+------------
+
+- The extension requires the swftools package installed on your linux box
+  This can be obtained from the swftools site (http://www.swftools.org/) or from your distribution repositories/packages
+
+
+Installation:
+------------
+- Copy ezpdfviewer in extension directory
+- In  settings/ezpdfviewer.ini set your pdf2swf executable path :
+- Enable the extension in site.ini
+- Clear the cache
+- Regenerate autoloads : php bin/php/ezpgenerateautoloads.php -e
+

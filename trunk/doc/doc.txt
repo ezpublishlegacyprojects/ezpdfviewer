@@ -1,0 +1,10 @@
+Extension : ezpdfviewer
+Requires  : eZ Publish 4.x.x (not tested on 3.X but can be easily customised for)
+Authors   : Jean-Yves Zinsou
+
+
+Make link to viewer :
+----------------------
+-For an attribute make a link as this one
+	 <a href="{concat("ezpdfviewer/view/attribute_id/",$node.data_map.myfile_attribute.id,"/attribute_version/",$node.data_map.myfile_attribute.version )|ezurl(no)}">preview</a>
+
