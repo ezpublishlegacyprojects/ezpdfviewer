@@ -119,6 +119,11 @@ $tpl->setVariable( 'converted_pdf_swf', eZSys::wwwDir(). '/var/ezpdfviewer/'.$re
 //$back_url= $current_node->urlAlias();
 //$tpl->setVariable( 'back_url', $back_url);
 
+$back_url= $attribute->object()->mainNode()->urlAlias();
+eZURI::transformURI($back_url);
+
+//really dirty way to set last accessed URI
+echo '<iframe name="setLastAccessedURI" src="'.$back_url.'" frameborder="0" height="0px" width="0px"></iframe> ';
 
 // use find/replace (parsing) in the template and save the result for $module_result.content
 $Result ['content'] = $tpl->fetch ( 'design:full/create.tpl' );
