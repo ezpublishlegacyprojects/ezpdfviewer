@@ -5,6 +5,10 @@ Authors   : Jean-Yves Zinsou
 
 Make link to viewer :
 ----------------------
--For an attribute make a link as this one
-	 <a href="{concat("ezpdfviewer/view/attribute_id/",$node.data_map.myfile_attribute.id,"/attribute_version/",$node.data_map.myfile_attribute.version )|ezurl(no)}">preview</a>
+From a file type attribute object,  make a link as this one to display viewer with:
 
+- no pagelayout (fullscreen)
+	 <a href="{concat("ezpdfviewer/do/attribute_id/",$node.data_map.myfile_attribute.id,"/attribute_version/",$node.data_map.myfile_attribute.version,"/context/view/fullscreen/yes" )|ezurl(no)}">preview</a>
+
+- whith pagelayout 
+	 <a href="{concat("ezpdfviewer/do/attribute_id/",$node.data_map.myfile_attribute.id,"/attribute_version/",$node.data_map.myfile_attribute.version,"/context/view" )|ezurl(no)}">preview</a>

@@ -1,5 +1,5 @@
 Extension : ezpdfviewer
-Requires  : eZ Publish 4.x.x (not tested on 3.X but can be easily customised for)
+Requires  : eZ Publish 4.x.x 
 Authors   : Jean-Yves Zinsou
 
 Requirements:

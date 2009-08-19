@@ -1,14 +1,15 @@
 <?php
 /**
- * PdfViewerOperators
- *
  * PHP version 5
  *
  * @category  PHP
+ * @package   eZPDFViewer
+ * @copyright 2009 Jean-Yves Zinsou
  * @author    Jean-Yves Zinsou
  * @license   http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License V2
- * @link      http://projects.ez.no/ezpdfviewer
- */
+ * version    2.0                                                                                                                                                                                        
+ *
+**/
 
 // This program is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -56,33 +57,21 @@ class eZPdfViewerOperators
             case 'pdfviewerurl':
                 {
                     $attribute = isset($params['attribute'])?$params['attribute'] : '';
-					$attribute_content= $attribute->content() ;
-					$filename=$attribute_content->Filename;
-					$originalfilename=$attribute_content->OriginalFilename;
-					$filepath  = $attribute_content->filePath();
+					include_once( 'extension/ezpdfviewer/classes/ezpdfviewer.php' );
+					$ezPDFViewer=new eZPDFViewer($attribute);
 
-					$fileSep = eZSys::fileSeparator();
-					$tmpDir = eZSys::rootDir().$fileSep.'var'.$fileSep.'ezpdfviewer';
-
-					$resultfileName=substr($filename,0,-4); ;
-					$resultfileName=$resultfileName .".swf";
-
-					$resultFile=$tmpDir.$fileSep.$resultfileName;
-					if(eZFileHandler::doExists($resultFile))
+					if(eZFileHandler::doExists($ezPDFViewer->resultFilePath()))
 					{
-						$result= eZSys::wwwDir(). '/var/ezpdfviewer/'.$resultfileName;
+						$result= $ezPDFViewer->resultFileUrl();
 					}
 					else
 					{
 						$result="";
 					}
-                }break;
-
+				break;
+                }
         }
         $operatorValue = $result;
-
-
-
     }
 
     public $Operators;

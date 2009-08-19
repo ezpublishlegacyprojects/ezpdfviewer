@@ -2,8 +2,7 @@
 # tell ez publish to grant this access to everybody 
 
 [RoleSettings] 
-PolicyOmitList[]=ezpdfviewer/view
-PolicyOmitList[]=ezpdfviewer/create
+PolicyOmitList[]=ezpdfviewer/do
 
 [TemplateSettings]
 ExtensionAutoloadPath[]=ezpdfviewer

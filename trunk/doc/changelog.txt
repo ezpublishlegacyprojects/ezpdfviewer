@@ -1,0 +1,12 @@
+V 2.0 :
+------
+	* rewrited all the code trying to respect ez coding standards 
+	* created a class to handle pdf to flash conversion
+	* added a context parameter to handle edit mode or view mode .  
+	* added a fullscreen parameter to handle edit mode or view mode .To
+	display viewer in fullscreen with no pagelayout if needed  
+	* the extension does not open new windows anymore on flashviewer in	create/view mode
+	* the width and height of the swfapplet is now configured from
+	ezpdfviewer.ini
+	* errors handled properly, logging the pdf2swf tools error in log file
+

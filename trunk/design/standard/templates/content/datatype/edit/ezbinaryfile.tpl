@@ -15,7 +15,8 @@
 <td>{$attribute.content.original_filename|wash( xhtml )}
 {def $pdfviewer_url= pdfviewerurl(hash('attribute',$attribute))}
 {if ne($pdfviewer_url,"")} 
-&nbsp;->&nbsp; <a href="#" onclick="window.open('{$pdfviewer_url}');" >preview</a>
+{def $url_preview=concat("ezpdfviewer/do/attribute_id/",$attribute.id,"/attribute_version/",$attribute.version,"/context/edit/fullscreen/yes")}
+&nbsp;->&nbsp; <a href="#" onclick="window.location.href=('{$url_preview|ezurl(no)}');" >{"preview"|i18n('ezpdfviewer/create')}</a>
 
 {/if}
 </td>
@@ -32,9 +33,9 @@
 
 {if eq($attribute.content.mime_type,'application/pdf' )} 
 
-{def $url_create=concat("ezpdfviewer/create/attribute_id/",$attribute.id,"/attribute_version/",$attribute.version)}
+{def $url_create=concat("ezpdfviewer/do/attribute_id/",$attribute.id,"/attribute_version/",$attribute.version,"/context/edit")}
 
-<input class="button" onclick="window.open('{$url_create|ezurl(no)}')" type="button" name="GeneratePDF" value="{'(Re)Generate PDF'|i18n( 'ezpdfviewer' )}" title="{'(Re)Generate PDF.'|i18n( 'ezpdfviewer' )}" />
+<input class="button" onclick="window.location.href='{$url_create|ezurl(no)}'" type="button" name="GenerateViewer" value="{'(Re)Generate viewer'|i18n( 'ezpdfviewer/create' )}" title="{'(Re)Generate viewer.'|i18n( 'ezpdfviewer/create' )}" />
 {/if}
 
 {undef $url_create} 
