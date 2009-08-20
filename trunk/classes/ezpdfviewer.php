@@ -138,15 +138,12 @@ class eZPDFViewer
 	**/
 	public function view() 
 	{
-echo "TT";
 		if(eZFileHandler::doExists($this->resultFilePath()))
 		{
-echo "bb";
 			return true;;
 		}
 		else
 		{
-echo "aa";
 			return $this->create();
 		}
 
