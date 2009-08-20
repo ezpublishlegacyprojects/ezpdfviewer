@@ -7,7 +7,7 @@
  * @copyright 2009 Jean-Yves Zinsou
  * @author    Jean-Yves Zinsou
  * @license   http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License V2
- * version    2.0                                                                                                                                                                                        
+ * version    1.3                                                                                                                                                                                        
  *
 **/
 
@@ -112,10 +112,25 @@ if ($context=="edit")
 
 		$tpl->setVariable( 'converted_pdf_swf', $ezPDFViewer->resultFileUrl());
 
+
+
+
+
 		$backUrl= $objectEditUrl;
 		$tpl->setVariable( 'back_url', $backUrl);
 		eZURI::transformURI($backUrl);
+		$http->setSessionVariable( "LastAccessesURI", "content/view/full/2" );
+		// use find/replace (parsing) in the template and save the result for $module_result.content
+		echo $tpl->fetch ( 'design:full/create.tpl' );
 
+		/*
+		   fix to avoid going back to viewer creation after publishing
+		   */
+		eZDB::checkTransactionCounter();
+		eZExecution::cleanExit();
+		return;
+/*
+   fix
 		// use find/replace (parsing) in the template and save the result for $module_result.content
 		$Result ['content'] = $tpl->fetch ( 'design:full/create.tpl' );
 		// generate route Modul1/create 
@@ -124,6 +139,7 @@ if ($context=="edit")
 		                          array( 'url' => false,
                                    'text' => 'view' ) ); 
 		return;
+*/
 }
 
 if ($context=="view")	
